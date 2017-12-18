@@ -9,8 +9,6 @@
 
     function afficherBoisson( $boissons ) {
         foreach($boissons as $boisson) {
-
-
             print "<h2>$boisson</h2>";
         }
     }
