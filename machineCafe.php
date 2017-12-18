@@ -1,7 +1,8 @@
 <?php
 	$listeBoissons = array("expresso", " café long", "thé");
 	$message = "En attente ...";
-	$today = date("d.m.y");        
+	$today = date("d.m.y");
+	$montant = 0;
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +18,7 @@
 		 	echo "<h2>".$key."</h2>";
 		}
 		echo "<p>".$message."</p>";
+		echo "<p>Montant : ".$montant." €</p>";
 	?>
 </body>
 </html>
