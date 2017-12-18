@@ -3,6 +3,11 @@
 	$message = "En attente ...";
 	$today = date("d.m.y");
 	$montant = 0;
+	function afficherBoisson( $boissons ) {
+		foreach($boissons as $boisson) {
+			print "<h2>$boisson</h2>";
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -11,14 +16,12 @@
 	<title>Coffee machine in php</title>
 </head>
 <body>
-	<?php
-		echo "<h1>Coffee machine</h1>";
-		echo "<h3>Date du jour : ".$today."</h3>";
-		foreach ($listeBoissons as $key) {
-		 	echo "<h2>".$key."</h2>";
-		}
-		echo "<p>".$message."</p>";
-		echo "<p>Montant : ".$montant." €</p>";
-	?>
+	<h1>Coffee machine</h1>
+	<p>Date du jour : <?= $today ?></p>
+
+	<?= afficherBoisson($listeBoissons) ?>
+
+	<p><?= $message ?></p>
+	<p>Montant : <?= $montant ?> €</p>	
 </body>
 </html>
