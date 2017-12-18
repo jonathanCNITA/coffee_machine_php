@@ -1,6 +1,4 @@
 <?php
-    setlocale (LC_TIME, 'fr_FR.utf8','fra');
-
     $listeBoissons = array("expresso", " café long", "thé");
     $message = "En attente ...";
     $heureLocale = date("H")+1;
