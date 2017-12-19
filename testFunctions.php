@@ -17,11 +17,25 @@
 
 	<!-- TEST afficherBoisson -->
     <h2 class="testTitle">Test afficherBoisson</h2>
-    <?= afficherBoisson( $listeBoissons ); ?>
+    <?= afficherBoisson( $boissonsRecette ); ?>
 
+
+    <!-- TEST recetteBoisson Refactoring -->
+    <h2 class="testTitle">TEST preparerBoisson Refactoring</h2>
+
+    <h3>Test preparerBoisson expresso + 1 sucre</h3>
+    <?= preparerBoisson( "expresso", 1,  $boissonsRecette ) ?>
+
+    <h3>Test preparerBoisson café long + 3 sucre</h3>
+    <?= preparerBoisson( "cafe_long", 3, $boissonsRecette ) ?>
+
+    <h3>Test preparerBoisson café long + 0 sucre</h3>
+    <?= preparerBoisson( "the", 0, $boissonsRecette ) ?>
+
+    
 
     <!-- TEST preparerExpresso -->
-    <h2 class="testTitle">TEST preparerExpresso</h2>
+    <!-- <h2 class="testTitle">TEST preparerExpresso</h2>
 
     <h3>Test preparerExpresso + 0 sucre</h3>
     <?= preparerExpresso( 0 ) ?>
@@ -30,11 +44,11 @@
     <?= preparerExpresso( 1 ) ?>
 
     <h3>Test preparerExpresso + 3 sucres</h3>
-    <?= preparerExpresso( 3 ) ?>
+    <?= preparerExpresso( 3 ) ?> -->
 
 
     <!-- TEST preparerCafeLong -->
-    <h2 class="testTitle">TEST preparerCafeLong</h2>
+    <!-- <h2 class="testTitle">TEST preparerCafeLong</h2>
 
     <h3>Test preparerCafeLong + 0 sucre</h3>
     <?= preparerCafeLong( 0 ) ?>
@@ -43,11 +57,11 @@
     <?= preparerCafeLong( 1 ) ?>
 
     <h3>Test preparerCafeLong + 3 sucres</h3>
-    <?= preparerCafeLong( 3 ) ?>
+    <?= preparerCafeLong( 3 ) ?> -->
 
 
     <!-- TEST preparerThe -->
-    <h2 class="testTitle">TEST preparerThe</h2>
+    <!-- <h2 class="testTitle">TEST preparerThe</h2>
 
     <h3>Test preparerThe + 0 sucre</h3>
     <?= preparerThe( 0 ) ?>
@@ -56,10 +70,10 @@
     <?= preparerThe( 1 ) ?>
 
     <h3>Test preparerThe + 3 sucres</h3>
-    <?= preparerThe( 3 ) ?>
+    <?= preparerThe( 3 ) ?> -->
 
     <!-- TEST recetteBoisson -->
-    <h2 class="testTitle">TEST recetteBoisson</h2>
+    <!-- <h2 class="testTitle">TEST recetteBoisson</h2>
 
     <h3>Test recetteBoisson expresso + 1 sucre</h3>
     <?= preparerBoisson( "expresso", 1 ) ?>
@@ -68,7 +82,9 @@
     <?= preparerBoisson( "cafe_long", 3 ) ?>
 
     <h3>Test recetteBoisson café long + 0 sucre</h3>
-    <?= preparerBoisson( "the", 0 ) ?>
+    <?= preparerBoisson( "the", 0 ) ?> -->
+
+    
 
 
 </body>

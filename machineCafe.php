@@ -13,12 +13,10 @@
     <p><?= $message ?></p>
     <p>Montant: <?= $montant ?> €</p>
 
-    
-
     <form action="preparerBoisson.php" method="post">
         <select name="boisson">
             <option selected disabled>Drink selection</option>
-            <?= afficherBoisson($listeBoissons) ?>
+            <?= afficherBoisson($boissonsRecette) ?>
         </select>
         <select name="sucre">
             <option selected disabled>Sugar selection</option>
