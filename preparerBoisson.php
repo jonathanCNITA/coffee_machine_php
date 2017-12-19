@@ -1,13 +1,16 @@
 <?php
-
-	function preparerBoisson( $boisson, $sucre) {
-        if ($boisson == "expresso") {
-            preparerExpresso($sucre);
-        } else if ($boisson == "cafe long") {
-            preparerCafeLong($sucre);
-        } else if ($boisson == "the") {
-            preparerThe($sucre);
-        }
-    }
-
+    include "fonctions.php";
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prepare boisson</title>
+</head>
+<body>
+    <h1>Prepare boisson</h1>
+    <ul>
+        <?php preparerBoisson("expresso", 3) ?>
+    </ul>
+</body>
+</html>

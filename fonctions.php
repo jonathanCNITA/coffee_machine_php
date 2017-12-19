@@ -36,7 +36,6 @@
         }
     }
 
-
     function preparerBoisson( $boisson, $sucre) {
         if ($boisson == "expresso") {
             preparerExpresso($sucre);
