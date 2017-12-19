@@ -31,6 +31,12 @@
 
     <h3>Test preparerBoisson café long + 0 sucre</h3>
     <?= preparerBoisson( "the", 0, $boissonsRecette ) ?>
-    
+
+    <!-- TEST checkData -->
+    <h2 class="testTitle">TEST checkData</h2>
+
+    <h3>Test checkData test => false</h3>
+    <?= checkData($_POST['boisson'], $_POST['sucre']) ?>
+
 </body>
 </html>
