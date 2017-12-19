@@ -10,6 +10,33 @@
             print "<h2>$boisson</h2>";
         }
     }
+
+
+    function expresso( $nbSucres ) {
+        $recette = array("café", "eau", $nbSucres." sucre(s)");
+        foreach($recette as $ingredient) {
+            print "<li>".$ingredient."</li>";
+        }
+       
+    }
+
+
+    function cafeLong( $nbSucres ) {
+        $recette = array("2 * café", "2 * eau", $nbSucres." sucre(s)");
+        foreach($recette as $ingredient) {
+            print "<li>".$ingredient."</li>";
+        }
+       
+    }
+
+
+    function the( $nbSucres ) {
+        $recette = array("1 * thé", "2 * eau", $nbSucres." sucre(s)");
+        foreach($recette as $ingredient) {
+            print "<li>".$ingredient."</li>";
+        }
+       
+    }
 ?>
 
 <!DOCTYPE html>
@@ -25,5 +52,9 @@
 
     <p><?= $message ?></p>
     <p>Montant: <?= $montant ?> €</p>
+    <h2>Recette boisson</h2>
+    <ul>
+        <?php the( 3 ) ?>
+    </ul>
 </body>
 </html>
