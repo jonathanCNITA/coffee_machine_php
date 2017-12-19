@@ -17,8 +17,8 @@
     }
 
 
-    function preparerBoisson($boisson, $sucre, $b) { 
-        foreach($b[$boisson] as $ingredient => $qty) {
+    function preparerBoisson($boisson, $sucre, $recette) { 
+        foreach($recette[$boisson] as $ingredient => $qty) {
             print "<li>".$qty." X ".$ingredient."</li>";
         }
         print "<li>".$sucre." X sucre(s)</li>";
