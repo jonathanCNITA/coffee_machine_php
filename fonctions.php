@@ -1,5 +1,5 @@
 <?php
-    $listeBoissons = array("expresso", " café long", "thé");
+    $listeBoissons = array("expresso", "cafe_long", "the");
     $message = "En attente ...";
     $heureLocale = date("H")+1;
     $today = date("d.m.y  \| $heureLocale:i");
@@ -8,7 +8,8 @@
 
     function afficherBoisson( $boissons ) {
         foreach($boissons as $boisson) {
-            print "<h2>$boisson</h2>";
+            //print "<button>$boisson</button>";
+            print "<option value=\"".$boisson."\">".$boisson."</option>";
         }
     }
 
@@ -36,10 +37,11 @@
         }
     }
 
+
     function preparerBoisson( $boisson, $sucre) {
         if ($boisson == "expresso") {
             preparerExpresso($sucre);
-        } else if ($boisson == "cafe long") {
+        } else if ($boisson == "cafe_long") {
             preparerCafeLong($sucre);
         } else if ($boisson == "the") {
             preparerThe($sucre);
