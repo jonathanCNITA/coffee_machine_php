@@ -15,25 +15,28 @@
 
 
     function preparerExpresso( $nbSucres ) {
-        $recette = array("café", "eau", $nbSucres." sucre(s)");
-        foreach($recette as $ingredient) {
-            print "<li>".$ingredient."</li>";
+        $recette = array( "café" => 1, "eau" => 1, "sucre" => $nbSucres);
+        //$recette = array("café", "eau", $nbSucres." sucre(s)");
+        foreach($recette as $ingredient => $qty) {
+            print "<li>".$qty." X ".$ingredient."</li>";
         }
     }
 
 
     function preparerCafeLong( $nbSucres ) {
-        $recette = array("2 * café", "2 * eau", $nbSucres." sucre(s)");
-        foreach($recette as $ingredient) {
-            print "<li>".$ingredient."</li>";
+        $recette = array( "café" => 2, "eau" => 4, "sucre" => $nbSucres);
+        //$recette = array("2 * café", "2 * eau", $nbSucres." sucre(s)");
+        foreach($recette as $ingredient => $qty) {
+            print "<li>".$qty." X ".$ingredient."</li>";
         }
     }
 
 
     function preparerThe( $nbSucres ) {
-        $recette = array("1 * thé", "2 * eau", $nbSucres." sucre(s)");
-        foreach($recette as $ingredient) {
-            print "<li>".$ingredient."</li>";
+        $recette = array( "thé" => 1, "eau" => 2, "sucre" => $nbSucres);
+        //$recette = array("1 * thé", "2 * eau", $nbSucres." sucre(s)");
+        foreach($recette as $ingredient => $qty) {
+            print "<li>".$qty." X ".$ingredient."</li>";
         }
     }
 

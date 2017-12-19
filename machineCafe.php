@@ -17,9 +17,11 @@
 
     <form action="preparerBoisson.php" method="post">
         <select name="boisson">
+            <option selected disabled>Drink selection</option>
             <?= afficherBoisson($listeBoissons) ?>
         </select>
         <select name="sucre">
+            <option selected disabled>Sugar selection</option>
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>

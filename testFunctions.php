@@ -65,7 +65,7 @@
     <?= preparerBoisson( "expresso", 1 ) ?>
 
     <h3>Test recetteBoisson café long + 3 sucre</h3>
-    <?= preparerBoisson( "cafe long", 3 ) ?>
+    <?= preparerBoisson( "cafe_long", 3 ) ?>
 
     <h3>Test recetteBoisson café long + 0 sucre</h3>
     <?= preparerBoisson( "the", 0 ) ?>
