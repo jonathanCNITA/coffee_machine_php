@@ -23,4 +23,13 @@
         }
         print "<li>".$sucre." X sucre(s)</li>";
     }
+
+    function checkData($dataBoisson, $dataSucre) {
+        if( isset($dataBoisson) && isset($dataSucre) ) {
+            print "Datas here";
+            return true;
+        }
+        print "No datas here";
+        return false;
+    }
 ?>
