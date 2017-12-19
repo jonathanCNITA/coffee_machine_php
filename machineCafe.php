@@ -1,42 +1,5 @@
 <?php
-    $listeBoissons = array("expresso", " café long", "thé");
-    $message = "En attente ...";
-    $heureLocale = date("H")+1;
-    $today = date("d.m.y  \| $heureLocale:i");
-    $montant = 0;
-
-    function afficherBoisson( $boissons ) {
-        foreach($boissons as $boisson) {
-            print "<h2>$boisson</h2>";
-        }
-    }
-
-
-    function expresso( $nbSucres ) {
-        $recette = array("café", "eau", $nbSucres." sucre(s)");
-        foreach($recette as $ingredient) {
-            print "<li>".$ingredient."</li>";
-        }
-       
-    }
-
-
-    function cafeLong( $nbSucres ) {
-        $recette = array("2 * café", "2 * eau", $nbSucres." sucre(s)");
-        foreach($recette as $ingredient) {
-            print "<li>".$ingredient."</li>";
-        }
-       
-    }
-
-
-    function the( $nbSucres ) {
-        $recette = array("1 * thé", "2 * eau", $nbSucres." sucre(s)");
-        foreach($recette as $ingredient) {
-            print "<li>".$ingredient."</li>";
-        }
-       
-    }
+    include "fonctions.php";
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +17,7 @@
     <p>Montant: <?= $montant ?> €</p>
     <h2>Recette boisson</h2>
     <ul>
-        <?php the( 3 ) ?>
+        <?php preparerThe( 3 ) ?>
     </ul>
 </body>
 </html>
