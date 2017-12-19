@@ -47,11 +47,17 @@
     <h3>Test preparerThe + 0 sucre</h3>
     <?= preparerThe( 0 ) ?>
 
-     <h3>Test preparerThe + 1 sucre</h3>
+    <h3>Test preparerThe + 1 sucre</h3>
     <?= preparerThe( 1 ) ?>
 
     <h3>Test preparerThe + 3 sucres</h3>
     <?= preparerThe( 3 ) ?>
+
+    <!-- TEST recetteBoisson -->
+    <h2>TEST recetteBoisson</h2>
+
+    <h3>Test recetteBoisson expresso + 1 sucre</h3>
+    <?= preparerBoisson( "expresso", 1 ) ?>
 
 
 </body>
