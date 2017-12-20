@@ -48,10 +48,10 @@
 
     function checkData($dataBoisson, $dataSucre) {
         if( isset($dataBoisson) && isset($dataSucre) ) {
-            print "Datas here";
+            //print "Datas here";
             return true;
         }
-        print "No datas here";
+        //print "No datas here";
         return false;
     }
 ?>
