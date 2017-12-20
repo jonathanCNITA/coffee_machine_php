@@ -14,8 +14,23 @@
         "café" => 10,
         "thé" => 10,
         "sucre" => 10,
-        "eau" => true
-    )
+        "eau" => false
+    );
+
+
+    function boissonDisponible($boisson, $recette, $stock) {
+        foreach($recette[$boisson] as $ingredient => $qty) {
+            print $ingredient . " " . $qty . " | ";
+            if ($stock[$ingredient] - $qty < 0) {
+                print "boisson non disponibe";
+                return false;
+            }
+            print $stock[$ingredient]. " <> ";
+        }
+        print "boisson disponibe";
+        return true;
+    }
+
 
     function afficherBoisson( $boissons ) {
         foreach($boissons as $boisson => $value) {
