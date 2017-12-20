@@ -38,5 +38,12 @@
     <h3>Test checkData test => false</h3>
     <?= checkData($_POST['boisson'], $_POST['sucre']) ?>
 
+
+    <!-- TEST boissonDisponible($boisson, $recette, $stock) -->
+    <h2 class="testTitle">TEST boissonDisponible($boisson, $recette, $stock)</h2>
+    <?php boissonDisponible("expresso", $boissonsRecette, $stockIngredient) ?>
+
+
+
 </body>
 </html>
