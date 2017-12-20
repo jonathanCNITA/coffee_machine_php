@@ -15,6 +15,8 @@
     <?php
         if( isset($_POST['boisson']) && isset($_POST['sucre']) ) {
             $message = $_POST['boisson'] . " en preparation";
+            decrementStock($_POST['boisson'], $boissonsRecette);
+            print var_dump($_SESSION["stockIngredient"]);
             print "<ul>".preparerBoisson($_POST['boisson'], $_POST['sucre'], $boissonsRecette)."</ul>";
         } else {
             $message = "choisissez votre boisson";
@@ -26,15 +28,12 @@
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <select name="boisson">
             <option selected disabled>Drink selection</option>
-            <?= afficherBoissonSiIngredients($boissonsRecette, $boissonsRecette, $stockIngredient) ?>
+            <?= afficherBoissonSiIngredients($boissonsRecette, $boissonsRecette, $_SESSION["stockIngredient"]) ?>
         </select>
         <select name="sucre">
             <option selected disabled>Sugar selection</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+            <?php afficherSucreSiSucre($stock); ?>
+            
         </select>
         <input type="submit" name="submit">
     </form>
