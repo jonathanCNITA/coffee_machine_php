@@ -32,8 +32,7 @@
         </select>
         <select name="sucre">
             <option selected disabled>Sugar selection</option>
-            <?php afficherSucreSiSucre($stock); ?>
-            
+            <?= afficherSucreSiSucre($stock); ?>  
         </select>
         <input type="submit" name="submit">
     </form>

@@ -9,18 +9,18 @@
 
 
     $boissonsRecette = array(
+        "thé" => array( "thé" => 1, "eau" => 2),
         "expresso" => array( "café" => 1, "eau" => 1),
         "cafe_long" => array( "café" => 2, "eau" => 4),
-        "thé" => array( "thé" => 1, "eau" => 2)
     );
 
 
     if( empty($_SESSION["stockIngredient"]) ) {
         $_SESSION["stockIngredient"] = array(
-        "eau" => 100,
-        "thé" => 2,
-        "café" => 2,
-        "sucre" => 2,
+            "eau" => 100,
+            "thé" => 2,
+            "café" => 2,
+            "sucre" => 2,
         );
     }
 
@@ -35,13 +35,6 @@
         return $isDispo;
     }
 
-    // Unused function ready to be deleted
-    function afficherBoisson( $boissons ) {
-        foreach($boissons as $boisson => $value) {
-            print "<option value=\"".$boisson."\">".$boisson."</option>"; 
-        }
-    }
-
 
     function afficherBoissonSiIngredients( $boissons, $recette, $stock ) {
         $listeBoisson = "";
@@ -53,21 +46,26 @@
         return $listeBoisson;
     }
 
+
     function afficherSucreSiSucre($stock) {
         $sugarStock = $_SESSION["stockIngredient"]['sucre'];
         $nbSugars = 0;
+        $options = "";
         do {
-            print "<option value=\"".$nbSugars."\">".$nbSugars."</option>";
+            $options .= "<option value=\"".$nbSugars."\">".$nbSugars."</option>";
             $nbSugars++;
         } while($nbSugars < 4 && $nbSugars < $sugarStock + 1);
+        return $options;
     }
 
 
-    function preparerBoisson($boisson, $sucre, $recette) { 
+    function preparerBoisson($boisson, $sucre, $recette) {
+        $ingredientList = "";
         foreach($recette[$boisson] as $ingredient => $qty) {
-            print "<li>".$qty." * ".$ingredient."</li>";
+            $ingredientList .= "<li>".$qty." * ".$ingredient."</li>";
         }
-        print "<li>".$sucre." * sucre(s)</li>";
+        $ingredientList .= "<li>".$sucre." * sucre(s)</li>";
+        return $ingredientList;
     }
 
 
@@ -78,13 +76,7 @@
         $_SESSION["stockIngredient"]["sucre"] -= $_POST['sucre'];
     }
 
-
-    function checkData($dataBoisson, $dataSucre) {
-        if( isset($dataBoisson) && isset($dataSucre) ) {
-            //print "Datas here";
-            return true;
-        }
-        //print "No datas here";
-        return false;
+    function getOutOfStock($stock) {
+        // return true if stoks are == 0
     }
 ?>
