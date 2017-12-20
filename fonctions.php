@@ -10,6 +10,13 @@
         "the" => array( "thé" => 1, "eau" => 2)
     );
 
+    $stockIngredient = array(
+        "café" => 10,
+        "thé" => 10,
+        "sucre" => 10,
+        "eau" => true
+    )
+
     function afficherBoisson( $boissons ) {
         foreach($boissons as $boisson => $value) {
             print "<option value=\"".$boisson."\">".$boisson."</option>";
