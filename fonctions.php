@@ -4,38 +4,48 @@
     $today = date("d.m.y  \| $heureLocale:i");
     $montant = 0;
 
+
     $boissonsRecette = array(
         "expresso" => array( "café" => 1, "eau" => 1),
         "cafe_long" => array( "café" => 2, "eau" => 4),
-        "the" => array( "thé" => 1, "eau" => 2)
+        "thé" => array( "thé" => 1, "eau" => 2)
     );
 
+
     $stockIngredient = array(
+        "eau" => 10,
+        "thé" => 0,
         "café" => 10,
-        "thé" => 10,
         "sucre" => 10,
-        "eau" => false
     );
 
 
     function boissonDisponible($boisson, $recette, $stock) {
+        $isDispo = true;
         foreach($recette[$boisson] as $ingredient => $qty) {
-            print $ingredient . " " . $qty . " | ";
             if ($stock[$ingredient] - $qty < 0) {
-                print "boisson non disponibe";
-                return false;
+                $isDispo = false;
             }
-            print $stock[$ingredient]. " <> ";
         }
-        print "boisson disponibe";
-        return true;
+        return $isDispo;
     }
 
 
     function afficherBoisson( $boissons ) {
         foreach($boissons as $boisson => $value) {
-            print "<option value=\"".$boisson."\">".$boisson."</option>";
+            print "<option value=\"".$boisson."\">".$boisson."</option>"; 
         }
+    }
+
+
+    function afficherBoissonSiIngredients( $boissons, $recette, $stock ) {
+        $listeBoisson = "";
+        foreach($boissons as $boisson => $value) {
+            if ( boissonDisponible($boisson, $recette, $stock) ){
+                $listeBoisson .= "<option value=\"".$boisson."\">".$boisson."</option>";
+            }
+        }
+        return $listeBoisson;
     }
 
 
@@ -45,6 +55,7 @@
         }
         print "<li>".$sucre." X sucre(s)</li>";
     }
+
 
     function checkData($dataBoisson, $dataSucre) {
         if( isset($dataBoisson) && isset($dataSucre) ) {

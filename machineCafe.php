@@ -10,22 +10,23 @@
 <body>
     <h1>Coffee machine</h1>
     <p>Date du jour : <?= $today ?></p>
-    
     <p>Montant: <?= $montant ?> €</p>
 
     <?php
         if( isset($_POST['boisson']) && isset($_POST['sucre']) ) {
-            print "Boisson en preparation";
+            $message = $_POST['boisson'] . " en preparation";
             print "<ul>".preparerBoisson($_POST['boisson'], $_POST['sucre'], $boissonsRecette)."</ul>";
         } else {
-            print "choisissez votre boisson";
+            $message = "choisissez votre boisson";
         } 
     ?>
+
+    <p><?= print $message ?></p>
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <select name="boisson">
             <option selected disabled>Drink selection</option>
-            <?= afficherBoisson($boissonsRecette) ?>
+            <?= afficherBoissonSiIngredients($boissonsRecette, $boissonsRecette, $stockIngredient) ?>
         </select>
         <select name="sucre">
             <option selected disabled>Sugar selection</option>
