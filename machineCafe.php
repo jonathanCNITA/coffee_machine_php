@@ -5,14 +5,33 @@
 <?php
     $bdd = connectToDB('coffee_machine', 'root', '');
 
-    // Get the drinks table
+    // SQL Get the drinks table
     $dbDrinks = $bdd->query('SELECT * FROM drinks');
     $myDrinks = $dbDrinks->fetchAll();
-    // Create a sale
-    $getDrinkCode = $bdd->prepare('SELECT code FROM drinks WHERE name = ?');
-    $addCommand = $bdd->prepare("INSERT INTO sales (drinks_code, id, sugar, date) VALUES ( ?, NULL, ?, CURRENT_DATE)");
+    // make an array with all the data from drinks table
+    $allDrinksData = array();
+    foreach($myDrinks as $drink){
+        $allDrinksData[$drink['name']] = array('code'=> $drink['code'], 'price' => $drink['price']); 
+    }
+    
+    if( isset($_POST['boisson']) && isset($_POST['sucre']) ) {
+        $message = $_POST['boisson'] . " en preparation";
+        $montant = $allDrinksData[ $_POST['boisson'] ]['price'];
+        $codeUserDrink = $allDrinksData[ $_POST['boisson'] ]['code'];
+        
+        makeAnOrder($bdd, $codeUserDrink, $_POST['sucre']);
+        
+        $recipe = theRecipe($bdd, $codeUserDrink);
+        decrementStock($bdd, $recipe, $_POST['sucre']);
+        $affichageDeLaRecette = afficherRecette($recipe, $_POST['sucre']);
+
+    } else {
+        $message = "choisissez votre boisson";
+    }
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -24,23 +43,8 @@
     <p>Date du jour : <?= $today ?></p>
     <p>Montant: <?= $montant ?> €</p>
 
-    <?php
-        if( isset($_POST['boisson']) && isset($_POST['sucre']) ) {
-            print $_POST['boisson'];
-            $message = $_POST['boisson'] . " en preparation";
-            decrementStock($_POST['boisson'], $boissonsRecette);
-            print var_dump($_SESSION["stockIngredient"]);
-            print "<ul>".preparerBoisson($_POST['boisson'], $_POST['sucre'], $boissonsRecette)."</ul>";
-            /*$userChoice = $getDrinkCode->execute(array($_POST['boisson']));
-            $getDrinkCode->closeCursor();*/
-            $addCommand->execute(array($userChoice, $_POST['sucre']));
-            $addCommand->closeCursor();
-        } else {
-            $message = "choisissez votre boisson";
-        } 
-    ?>
-
-    <p><?= print $message ?></p>
+    <p><?=  $message ?></p>
+    <div><?= $affichageDeLaRecette ?><div>
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <select name="boisson">
@@ -49,7 +53,7 @@
         </select>
         <select name="sucre">
             <option selected disabled>Sugar selection</option>
-            <?= afficherSucreSiSucre($stock); ?>  
+            <?= afficherSucreSiSucre($bdd); ?>  
         </select>
         <input type="submit" name="submit">
     </form>
