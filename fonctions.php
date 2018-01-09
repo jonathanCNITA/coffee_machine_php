@@ -35,7 +35,7 @@
         return $isDispo;
     }
 
-
+    // Linked locally - toTrash
     function afficherBoissonSiIngredients( $boissons, $recette, $stock ) {
         $listeBoisson = "";
         foreach($boissons as $boisson => $value) {
@@ -44,6 +44,15 @@
             }
         }
         return $listeBoisson;
+    }
+
+    // Linked with BDD
+    function afficherListeBoisson( $boissons ) {
+        $listeBoissons = "";
+        foreach($boissons as $boisson) {
+                $listeBoissons .= "<option value=\"".$boisson['name']."\">".$boisson['name']."</option>";
+        }
+        return $listeBoissons;
     }
 
 
@@ -79,4 +88,16 @@
     function getOutOfStock($stock) {
         // return true if stoks are == 0
     }
+
+
+    // Connect to the DB
+    function connectToDB($dbName, $userName, $mdp) {
+        try {
+            $db = new PDO('mysql:host=localhost;dbname='.$dbName.';charset=utf8', $userName, $mdp);
+        } catch(Exeption $e) {
+            die('Error: '. $e->getMessage());
+        }
+        return $db;
+    }
+    
 ?>
