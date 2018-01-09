@@ -10,7 +10,7 @@
     $myDrinks = $dbDrinks->fetchAll();
     // make an array with all the data from drinks table
     $allDrinksData = array();
-    foreach($myDrinks as $drink){
+    foreach($myDrinks as $drink) {
         $allDrinksData[$drink['name']] = array('code'=> $drink['code'], 'price' => $drink['price']); 
     }
     

@@ -53,7 +53,7 @@
         foreach($drinkRecipe as $ing) {
             $decrementIngredients->execute(array($ing['recipeqty'], $ing['ingredients_id']));
         }
-        if($sugar){
+        if($sugar > 0) {
             $decrementIngredients->execute(array($sugar, 6));
         }
         $decrementIngredients->closeCursor();
