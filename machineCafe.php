@@ -1,9 +1,10 @@
 <?php
     include "fonctions.php";
+    require_once "config.inc.php";
 ?>
 
 <?php
-    $bdd = connectToDB('coffee_machine', 'root', '');
+    $bdd = connectToDB($dbas, $user, $pass);
 
     // SQL Get the drinks table
     $dbDrinks = $bdd->query('SELECT * FROM drinks');
@@ -15,16 +16,17 @@
     }
     
     if( isset($_POST['boisson']) && isset($_POST['sucre']) ) {
-        $message = $_POST['boisson'] . " en preparation";
-        $montant = $allDrinksData[ $_POST['boisson'] ]['price'];
-        $codeUserDrink = $allDrinksData[ $_POST['boisson'] ]['code'];
-        
-        makeAnOrder($bdd, $codeUserDrink, $_POST['sucre']);
-        
-        $recipe = theRecipe($bdd, $codeUserDrink);
-        decrementStock($bdd, $recipe, $_POST['sucre']);
-        $affichageDeLaRecette = afficherRecette($recipe, $_POST['sucre']);
-
+        if($_POST['boisson'] != "" || $_POST['boisson'] != "" ) {
+            $message = $_POST['boisson'] . " en preparation";
+            $montant = $allDrinksData[ $_POST['boisson'] ]['price'];
+            $codeUserDrink = $allDrinksData[ $_POST['boisson'] ]['code'];
+            
+            makeAnOrder($bdd, $codeUserDrink, $_POST['sucre']);
+            
+            $recipe = theRecipe($bdd, $codeUserDrink);
+            decrementStock($bdd, $recipe, $_POST['sucre']);
+            $affichageDeLaRecette = afficherRecette($recipe, $_POST['sucre']);
+        }
     } else {
         $message = "choisissez votre boisson";
     }
