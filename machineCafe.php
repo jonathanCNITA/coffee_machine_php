@@ -7,25 +7,25 @@
     $bdd = connectToDB($dbas, $user, $pass);
 
     // SQL Get the drinks table
-    $dbDrinks = $bdd->query('SELECT * FROM drinks');
+    $dbDrinks = $bdd->query("SELECT * FROM drinks");
     $myDrinks = $dbDrinks->fetchAll();
     // make an array with all the data from drinks table
     $allDrinksData = array();
     foreach($myDrinks as $drink) {
-        $allDrinksData[$drink['name']] = array('code'=> $drink['code'], 'price' => $drink['price']); 
+        $allDrinksData[$drink["name"]] = array("code"=> $drink["code"], "price" => $drink["price"]); 
     }
     
-    if( isset($_POST['boisson']) && isset($_POST['sucre']) ) {
-        if($_POST['boisson'] != "" || $_POST['boisson'] != "" ) {
-            $message = $_POST['boisson'] . " en preparation";
-            $montant = $allDrinksData[ $_POST['boisson'] ]['price'];
-            $codeUserDrink = $allDrinksData[ $_POST['boisson'] ]['code'];
+    if( isset($_POST["boisson"]) && isset($_POST["sucre"]) ) {
+        if($_POST["boisson"] != "" || $_POST["boisson"] != "" ) {
+            $message = $_POST["boisson"] . " en preparation";
+            $montant = $allDrinksData[ $_POST["boisson"] ]["price"];
+            $codeUserDrink = $allDrinksData[ $_POST["boisson"] ]["code"];
             
-            makeAnOrder($bdd, $codeUserDrink, $_POST['sucre']);
+            makeAnOrder($bdd, $codeUserDrink, $_POST["sucre"]);
             
             $recipe = theRecipe($bdd, $codeUserDrink);
-            decrementStock($bdd, $recipe, $_POST['sucre']);
-            $affichageDeLaRecette = afficherRecette($recipe, $_POST['sucre']);
+            decrementStock($bdd, $recipe, $_POST["sucre"]);
+            $affichageDeLaRecette = afficherRecette($recipe, $_POST["sucre"]);
         }
     } else {
         $message = "choisissez votre boisson";
@@ -48,7 +48,7 @@
     <p><?=  $message ?></p>
     <div><?= $affichageDeLaRecette ?><div>
 
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
         <select name="boisson">
             <option selected disabled>Drink selection</option>
             <?= afficherListeBoisson($myDrinks) ?>
