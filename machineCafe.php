@@ -42,6 +42,7 @@
 </head>
 <body>
     <h1>Coffee machine</h1>
+    <p>---------------------------------------</p>
     <p>Date du jour : <?= $today ?></p>
     <p>Montant: <?= $montant ?> €</p>
 
